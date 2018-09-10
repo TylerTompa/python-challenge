@@ -7,19 +7,23 @@ csv_budget_data = os.path.join("Resources", "budget_data.csv")
 
 with open(csv_budget_data, newline="") as csv_file:
     
-    budget_data_reader = csv.reader(csv_file, delimiter=",")
-    budget_data_header = next(budget_data_reader)
-    # print(budget_data_header)   
+    # budget_data_reader = csv.reader(csv_file, delimiter=",")
+    # budget_data_header = next(budget_data_reader)
+    # # print(budget_data_header)   
 
-    # This iterates through the budget_data_reader variable to create a list, and thereafter computes the length of said list.
-    total_months = len(list(budget_data_reader))
-
+    # The pandas package allows us to create lists which are composed of individual rows from a csv file.  
     column_names = ["date", "profits"]
     finances = pandas.read_csv(csv_budget_data, names=column_names)
     profits = finances.profits.tolist()
+    months = finances.date.tolist()
+
+total_profit = 0
+for i in range(len(profits)):
+    if i != 0:
+        total_profit += int(profits[i])
 
 
 print("Financial Analysis")
 print("----------------------------")
-print(f"Total months: {total_months}")
-# print(f"Total profits: {profits}")
+print(f"Total months: {len(months)-1}")
+print(f"Total profits: {total_profit}")
