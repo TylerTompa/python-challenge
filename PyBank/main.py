@@ -1,10 +1,9 @@
 # The os package allows us to create custom file paths, and the pandas package allows us to read and manipulate csv files.
 import os
+import csv
 import pandas
 
 csv_budget_data = os.path.join("Resources", "budget_data.csv")
-
-   
 
 # The pandas package allows us to create lists which are composed of individual rows from a csv file.  
 column_names = ["date", "profits"]
@@ -40,3 +39,16 @@ print(f"Total profits: ${total_profit:,}")
 print(f"Average Change: ${(sum(changes)/len(changes)):,.2f}")
 print(f"Greatest Increase in Profits: {months[offset_max]} (${max(changes):,})")
 print(f"Greatest Decrease in Profits: {months[offset_min]} (${min(changes):,})")
+
+text_export = os.path.join("financial_analysis.txt")
+
+with open(text_export, "w", newline="") as txt_file:
+    csv_writer = csv.writer(txt_file, delimiter=",")
+
+    csv_writer.writerow("Financial Analysis")
+    csv_writer.writerow("----------------------------")
+    csv_writer.writerow(f"Total months: {len(months)-1}")
+    csv_writer.writerow(f"Total profits: ${total_profit:,}")
+    csv_writer.writerow(f"Average Change: ${(sum(changes)/len(changes)):,.2f}")
+    csv_writer.writerow(f"Greatest Increase in Profits: {months[offset_max]} (${max(changes):,})")
+    csv_writer.writerow(f"Greatest Decrease in Profits: {months[offset_min]} (${min(changes):,})")
