@@ -22,33 +22,17 @@ for i in range(len(profits)):
     if i != 0:
         total_profit += int(profits[i])
 
-# The variable changes is a list which stores the change in profits for each month.  The suceeding for loop will find the difference between each pair of adjancent months and store them in this list.
+# The variable changes is a list which stores the change in profits for each month.  The suceeding for-loop will find the difference between each pair of adjancent months and store them in this list.  We will then be able to use primitive functions to find the sum and length of this list, and thereafter the average.
 changes = []
-change = 0
 for i in range(len(profits)):
-    if i != 0 and i != 1:
-        change = (int(profits[i]) - int(profits[i-1])) / 2
+    if i not in (0,1):
+        change = int(profits[i]) - int(profits[i-1])
         changes.append(change)
-
-# for i in range(len(changes)):
-#     print(changes[i])
-
-# print("----------------------------")
-
-# print(profits[2])
-# print(profits[1])
-# print(int(profits[2])-int(profits[1]))
-# print(float(profits[2])-float(profits[1]))
-
-the_sum = sum(changes)
-the_len = len(changes)
-the_avg = the_sum/the_len
-print(the_avg)
 
 print("Financial Analysis")
 print("----------------------------")
 print(f"Total months: {len(months)-1}")
 print(f"Total profits: {total_profit}")
-print(f"Average Change: {sum(changes)/len(changes)}")
+print(f"Average Change: {(sum(changes)/len(changes)):.2f}")
 print(f"Greatest Increase in Profits: ")
 print(f"Greatest Decreast in Profits: ")
