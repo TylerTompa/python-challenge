@@ -29,10 +29,17 @@ for i in range(len(profits)):
         change = int(profits[i]) - int(profits[i-1])
         changes.append(change)
 
+max_change = max(changes)
+print(max_change)
+max_change_index = changes.index(max(changes))
+print(max_change_index)
+offset = max_change_index + 2
+print(months[offset])
+
 print("Financial Analysis")
 print("----------------------------")
 print(f"Total months: {len(months)-1}")
 print(f"Total profits: {total_profit}")
 print(f"Average Change: {(sum(changes)/len(changes)):.2f}")
-print(f"Greatest Increase in Profits: ")
-print(f"Greatest Decreast in Profits: ")
+print(f"Greatest Increase in Profits: {months[offset]} (${max(changes)})")
+print(f"Greatest Decreast in Profits: (${min(changes)})")
