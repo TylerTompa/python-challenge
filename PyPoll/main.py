@@ -18,3 +18,4 @@ candidates= votes.candidate.tolist()
 
 print("Election Results")
 print("-------------------------")
+print(f"Total Votes: {len(candidates)-1}")
