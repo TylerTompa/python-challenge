@@ -35,6 +35,7 @@ offset_greatest_increase = greatest_profit_increase_index + 2
 greatest_profit_decrease_index = changes.index(min(changes))
 offset_greatest_decrease = greatest_profit_decrease_index + 2
 
+# This prints the financial statistics we found.
 print("Financial Analysis")
 print("----------------------------")
 print(f"Total months: {len(months)-1}")
