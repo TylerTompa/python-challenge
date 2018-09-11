@@ -27,6 +27,18 @@ for i in range(len(candidates)):
     elif candidates[i] == "O'Tooley":
         votes_otooley += 1
 
+vote_percentages = []
+
+percent_votes_correy = round((100*(votes_correy/(len(candidates)-1))),3)
+percent_votes_khan = round((100*(votes_khan/(len(candidates)-1))),3)
+percent_votes_li = round((100*(votes_li/(len(candidates)-1))),3)
+percent_votes_otooley = round((100*(votes_otooley/(len(candidates)-1))),3)
+
+vote_percentages.append(percent_votes_correy)
+vote_percentages.append(percent_votes_khan)
+vote_percentages.append(percent_votes_li)
+vote_percentages.append(percent_votes_otooley)
+
 # for i in candidates:
 #     print(candidates[i])
 
@@ -34,7 +46,10 @@ print("Election Results")
 print("-------------------------")
 print(f"Total Votes: {len(candidates)-1}")
 print("-------------------------")
-print(f"Khan: {votes_khan}")
-print(f"Correy: {votes_correy}")
-print(f"Li: {votes_li}")
-print(f"O'Tooley: {votes_otooley}")
+print(f"Khan: {percent_votes_khan}% ({votes_khan})")
+print(f"Correy: {percent_votes_correy}% ({votes_correy})")
+print(f"Li: {percent_votes_li}% ({votes_li})")
+print(f"O'Tooley: {percent_votes_otooley}% ({votes_otooley})")
+print("-------------------------")
+print("Winner: ")
+print("-------------------------")
