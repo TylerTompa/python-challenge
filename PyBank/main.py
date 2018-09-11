@@ -1,8 +1,11 @@
-# The os package allows us to create custom file paths, and the pandas package allows us to read and manipulate csv files.
+# The os package allows us to create files paths across systems.
+# The csv package allows us to read and write to csv files.
+# The pandas package allows us to manipulate csv files.
 import os
 import csv
 import pandas
 
+# This creates a file path leading to the budget_data csv file so that users on different operating systems can use this file.
 csv_budget_data = os.path.join("Resources", "budget_data.csv")
 
 # The pandas package allows us to create lists which are composed of individual rows from a csv file.  
