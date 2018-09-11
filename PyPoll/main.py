@@ -1,6 +1,7 @@
 # This os package allows us to create file paths across systems.
 # The csv package allows us to read and write csv files.
 # The pandas package allows us to manipulate csv files.
+# The mode function from the statistics package will allow us to determine which candidate appears most frequently in the list of candidates.
 import os
 import csv
 import pandas
@@ -61,3 +62,22 @@ print(f"O'Tooley: {percent_votes_otooley}% ({votes_otooley})")
 print("-------------------------")
 print(f"Winner: {winner}")
 print("-------------------------")
+
+# This creates a path which a text file with the results wll be exported to.
+text_export = os.path.join("election_data_results")
+
+# This creates a text file with the results and exports it to the path defined above.
+with open(text_export, "w",newline="") as txt_file:
+    csv_writer = csv.writer(txt_file)
+
+    csv_writer.writerow(["Election Results"])
+    csv_writer.writerow(["-------------------------"])
+    csv_writer.writerow([f"Total Votes: {len(candidates)-1}"])
+    csv_writer.writerow(["-------------------------"])
+    csv_writer.writerow([f"Khan: {percent_votes_khan}% ({votes_khan})"])
+    csv_writer.writerow([f"Correy: {percent_votes_correy}% ({votes_correy})"])
+    csv_writer.writerow([f"Li: {percent_votes_li}% ({votes_li})"])
+    csv_writer.writerow([f"O'Tooley: {percent_votes_otooley}% ({votes_otooley})"])
+    csv_writer.writerow(["-------------------------"])
+    csv_writer.writerow([f"Winner: {winner}"])
+    csv_writer.writerow(["-------------------------"])

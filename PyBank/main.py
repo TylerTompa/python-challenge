@@ -44,6 +44,7 @@ print(f"Average Change: ${average_change}")
 print(f"Greatest Increase in Profits: {months[offset_greatest_increase]} (${max(changes):,})")
 print(f"Greatest Decrease in Profits: {months[offset_greatest_decrease]} (${min(changes):,})")
 
+# This creates a path which a text file with the analysis will be exported to.
 text_export = os.path.join("financial_analysis.txt")
 
 with open(text_export, "w", newline="") as txt_file:
