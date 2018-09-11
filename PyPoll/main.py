@@ -64,7 +64,7 @@ print(f"Winner: {winner}")
 print("-------------------------")
 
 # This creates a path which a text file with the results wll be exported to.
-text_export = os.path.join("election_data_results")
+text_export = os.path.join("election_results.txt")
 
 # This creates a text file with the results and exports it to the path defined above.
 with open(text_export, "w",newline="") as txt_file:
