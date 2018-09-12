@@ -48,10 +48,6 @@ vote_percentages.append(percent_votes_otooley)
 # The statistical mode is the value that occurs most frequently in a collection of values.
 winner = mode(candidates)
 
-# Someone suggested using the pandas mode function.  Ask about this in class.
-# candidates_dataframe = pandas.DataFrame(candidates)
-# winner = candidates_dataframe.mode(axis=0)
-
 # This prints the results.
 print("Election Results")
 print("-------------------------")
