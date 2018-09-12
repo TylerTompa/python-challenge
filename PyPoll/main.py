@@ -1,6 +1,5 @@
 # This os package allows us to create file paths across systems.
 # The csv package allows us to read and write csv files.
-# The pandas package allows us to manipulate csv files.
 # The mode function from the statistics package will allow us to determine which candidate appears most frequently in the list of candidates.
 import os
 import csv
@@ -16,7 +15,7 @@ candidates = []
 with open(csv_election_data, "r") as csvfile:
     csvreader = csv.reader(csvfile, delimiter = ",")
     for row in csvreader:
-        candidates.append(row[2])
+        candidates.append(row[2]) 
 
 # This loop iterates through out list of candidates and adds one vote each time the candidate's name is found.
 votes_correy = 0

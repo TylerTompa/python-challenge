@@ -1,6 +1,5 @@
 # The os package allows us to create files paths across systems.
 # The csv package allows us to read and write to csv files.
-# The pandas package allows us to manipulate csv files.
 import os
 import csv
 
