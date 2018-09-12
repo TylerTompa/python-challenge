@@ -3,16 +3,20 @@
 # The pandas package allows us to manipulate csv files.
 import os
 import csv
-import pandas
 
 # This creates a file path leading to the budget_data csv file so that users on different operating systems can use this file.
 csv_budget_data = os.path.join("Resources", "budget_data.csv")
 
-# The pandas package allows us to create lists which are composed of individual rows from a csv file.  
-column_names = ["date", "profits"]
-finances = pandas.read_csv(csv_budget_data, names=column_names)
-profits = finances.profits.tolist()
-months = finances.date.tolist()
+# Later we will use a for loop to create a list of profits and months using the columns from our csv file.  This is to initialize those lists so that we may use the append() method.
+months = []
+profits = []
+
+# This reads the budget_data csv file and uses a for loop to create lists composed of each column.
+with open(csv_budget_data,"r") as csvfile:
+    csvreader = csv.reader(csvfile, delimiter=",")
+    for row in csvreader:
+        months.append(row[0])
+        profits.append(row[1])
 
 total_profit = 0
 for i in range(len(profits)):
@@ -47,13 +51,14 @@ print(f"Greatest Decrease in Profits: {months[offset_greatest_decrease]} (${min(
 # This creates a path which a text file with the analysis will be exported to.
 text_export = os.path.join("financial_analysis.txt")
 
+# This creates a text file with the analysis and exports it to the path defined above.
 with open(text_export, "w", newline="") as txt_file:
-    csv_writer = csv.writer(txt_file, escapechar=" ", quoting=csv.QUOTE_NONE)
+    csv_writer = csv.writer(txt_file)
 
     csv_writer.writerow(["Financial Analysis"])
     csv_writer.writerow(["----------------------------"])
     csv_writer.writerow([f"Total months: {len(months)-1}"])
-    csv_writer.writerow([f"Total profits: ${total_profit:,}"])
+    csv_writer.writerow([f"Total profits: ${total_profit}"])
     csv_writer.writerow([f"Average Change: ${average_change}"])
     csv_writer.writerow([f"Greatest Increase in Profits: {months[offset_greatest_increase]} (${max(changes):,})"])
     csv_writer.writerow([f"Greatest Decrease in Profits: {months[offset_greatest_decrease]} (${min(changes):,})"])

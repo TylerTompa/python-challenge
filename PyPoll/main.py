@@ -4,16 +4,19 @@
 # The mode function from the statistics package will allow us to determine which candidate appears most frequently in the list of candidates.
 import os
 import csv
-import pandas
 from statistics import mode
 
 # This creates a file path leading to the election_data csv file so that users on different operating systems can use this file.
 csv_election_data = os.path.join("Resources","election_data.csv")
 
-# The pandas package allows us to create lists which are composed of individual rows from a csv file.
-column_names = ["voter_id", "county", "candidate"]
-votes = pandas.read_csv(csv_election_data, names=column_names, low_memory=False)
-candidates= votes.candidate.tolist()
+# Later we will use a for loop to count the number of votes each candidate recieved by counting the number of times each candidate's name appears on a list.  This is to initialize that list.
+candidates = []
+
+# This reads the election_data csv file and uses a for loop to create a list of votes by appending a candidate's name to the list each time it is found in the csv file.
+with open(csv_election_data, "r") as csvfile:
+    csvreader = csv.reader(csvfile, delimiter = ",")
+    for row in csvreader:
+        candidates.append(row[2])
 
 # This loop iterates through out list of candidates and adds one vote each time the candidate's name is found.
 votes_correy = 0
@@ -43,7 +46,7 @@ vote_percentages.append(percent_votes_khan)
 vote_percentages.append(percent_votes_li)
 vote_percentages.append(percent_votes_otooley)
 
-#Stackoverflow says this could cause problems if more than one value appears the maximum number of times.
+# The statistical mode is the value that occurs most frequently in a collection of values.
 winner = mode(candidates)
 
 # Someone suggested using the pandas mode function.  Ask about this in class.
