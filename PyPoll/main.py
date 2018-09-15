@@ -3,7 +3,6 @@
 # The mode function from the statistics package will allow us to determine which candidate appears most frequently in the list of candidates.
 import os
 import csv
-from statistics import mode
 
 # This creates a file path leading to the election_data csv file so that users on different operating systems can use this file.
 csv_election_data = os.path.join("Resources","election_data.csv")
@@ -45,8 +44,14 @@ vote_percentages.append(percent_votes_khan)
 vote_percentages.append(percent_votes_li)
 vote_percentages.append(percent_votes_otooley)
 
-# The statistical mode is the value that occurs most frequently in a collection of values.
-winner = mode(candidates)
+winner = "Correy"
+if percent_votes_khan > percent_votes_correy:
+    winner = "Khan"
+if (percent_votes_li > percent_votes_correy) and (percent_votes_li > percent_votes_khan):
+    winner = "Li"
+if (percent_votes_otooley > percent_votes_correy) and (percent_votes_otooley > percent_votes_khan) and (percent_votes_otooley > percent_votes_li):
+    winner = "O'Tooley"
+
 
 # This prints the results.
 print("Election Results")
