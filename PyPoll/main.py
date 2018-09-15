@@ -44,6 +44,7 @@ vote_percentages.append(percent_votes_khan)
 vote_percentages.append(percent_votes_li)
 vote_percentages.append(percent_votes_otooley)
 
+"""This sets the winner to Correy, then checks to see if Khan has more votes than Correy.  If so, the winner is set to Khan.  It then checks to see if Li has more votes than Correy and more votes than Khan; if so, the winner is set to Li.  Finally it checks to see if O'Tooley has more votes than Correy, and if O'Tooley has more votes than Khan, and if O'Tooley has more votes than Li, if so, the winner is set to O'Tooley.  By checking multiple conditions with the keyword "and," we ensure that each candidate must have more votes than every candidate that came before.  It is not necessary to check multiple conditions on each line, as Khan is only considered if he has more votes than Coorey, and if Khan has fewer votes than another candidate, then Khan will be replaced as the winner.  The same logic applies for each successive candidate."""
 winner = "Correy"
 if percent_votes_khan > percent_votes_correy:
     winner = "Khan"
